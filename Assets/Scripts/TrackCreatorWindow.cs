@@ -291,7 +291,7 @@ public class TrackCreatorWindow : EditorWindow
         string json = JsonUtility.ToJson(data, true);
         string path = EditorUtility.SaveFilePanel(
             "Save Track Layout",
-            "Assets",
+            "Assets/TrackData",
             $"{trackName}.json",
             "json"
         );
@@ -307,7 +307,7 @@ public class TrackCreatorWindow : EditorWindow
     {
         string path = EditorUtility.OpenFilePanel(
             "Load Track Layout",
-            "Assets",
+            "Assets/TrackData",
             "json"
         );
 
@@ -383,10 +383,10 @@ public class TrackCreatorWindow : EditorWindow
         track.orderedTiles = OrderTilesInSequence(tiles, track.startTile);
 
         // Save as prefab
-        string prefabPath = $"Assets/Tracks/{trackName}.prefab";
-        if (!AssetDatabase.IsValidFolder("Assets/Tracks"))
+        string prefabPath = $"Assets/Prefabs/Tracks/{trackName}.prefab";
+        if (!AssetDatabase.IsValidFolder("Assets/Prefabs/Tracks"))
         {
-            AssetDatabase.CreateFolder("Assets", "Tracks");
+            AssetDatabase.CreateFolder("Assets/Prefabs", "Tracks");
         }
 
         GameObject prefab = PrefabUtility.SaveAsPrefabAsset(trackObject, prefabPath);
