@@ -40,6 +40,11 @@ public class GameManager : MonoBehaviour
 
     private void TriggerMinigame()
     {
+        uiManager.StartFlagQuiz();
+    }
+
+    public void CompleteQuiz()
+    {
         CompleteTurn();
     }
 }

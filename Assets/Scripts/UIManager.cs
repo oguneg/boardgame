@@ -7,9 +7,11 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
     [SerializeField] private RollButtonHandler rollButton;
+    [SerializeField] private FlagQuizHandler flagQuizHandler;
     private void Start()
     {
         rollButton.OnButtonClicked += OnRollButton;
+        flagQuizHandler.OnQuizComplete+=OnQuizComplete;
     }
 
     private void OnRollButton()
@@ -21,5 +23,16 @@ public class UIManager : MonoBehaviour
     {
         rollButton.SetDiceText(0);
         rollButton.SetButtonStatus(true);
+    }
+
+    public void StartFlagQuiz()
+    {
+        flagQuizHandler.StartQuiz();
+    }
+
+    public void OnQuizComplete(bool isSuccess)
+    {
+        flagQuizHandler.gameObject.SetActive(false);
+        gameManager.CompleteQuiz();
     }
 }
