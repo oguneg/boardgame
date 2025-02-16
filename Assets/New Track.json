@@ -1,0 +1,189 @@
+{
+    "cells": [
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": false,
+            "position": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": true,
+            "position": {
+                "x": 0,
+                "y": 1
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": false,
+            "position": {
+                "x": 0,
+                "y": 2
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": true,
+            "position": {
+                "x": 0,
+                "y": 3
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": false,
+            "position": {
+                "x": 1,
+                "y": 0
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": false,
+            "position": {
+                "x": 1,
+                "y": 3
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": false,
+            "position": {
+                "x": 1,
+                "y": 4
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": false,
+            "position": {
+                "x": 1,
+                "y": 5
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": true,
+            "isMinigame": false,
+            "position": {
+                "x": 2,
+                "y": 0
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": false,
+            "position": {
+                "x": 2,
+                "y": 5
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": false,
+            "position": {
+                "x": 3,
+                "y": 0
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": true,
+            "position": {
+                "x": 3,
+                "y": 5
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": false,
+            "position": {
+                "x": 4,
+                "y": 0
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": false,
+            "position": {
+                "x": 4,
+                "y": 1
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": false,
+            "position": {
+                "x": 4,
+                "y": 4
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": false,
+            "position": {
+                "x": 4,
+                "y": 5
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": false,
+            "position": {
+                "x": 5,
+                "y": 1
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": true,
+            "position": {
+                "x": 5,
+                "y": 2
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": false,
+            "position": {
+                "x": 5,
+                "y": 3
+            }
+        },
+        {
+            "isTrackTile": true,
+            "isStart": false,
+            "isMinigame": false,
+            "position": {
+                "x": 5,
+                "y": 4
+            }
+        }
+    ],
+    "dimensions": {
+        "x": 6,
+        "y": 6
+    },
+    "trackName": "New Track"
+}
