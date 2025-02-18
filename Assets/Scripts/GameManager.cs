@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private UIManager uiManager;
+    [SerializeField] private CurrencyManager currencyManager;
     [SerializeField] private PlayerController player;
     int moves = 0;
 
@@ -50,8 +51,12 @@ public class GameManager : MonoBehaviour
         uiManager.StartFlagQuiz();
     }
 
-    public void CompleteQuiz()
+    public void CompleteQuiz(bool isSuccess)
     {
+        if(isSuccess)
+        {
+            currencyManager.AddCurrency(100);
+        }
         CompleteTurn();
     }
 }

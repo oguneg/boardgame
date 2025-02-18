@@ -491,6 +491,18 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!114 &575856744 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7211003033419690997, guid: 3cc0cc78ace2ff24c85323669da838d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 7981011502077839081}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,6 +1074,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2064117896739776645, guid: b694f3ef60812f543a7932881fd301d9,
+        type: 3}
+      propertyPath: coinText
+      value: 
+      objectReference: {fileID: 575856744}
     - target: {fileID: 2642275427490295210, guid: b694f3ef60812f543a7932881fd301d9,
         type: 3}
       propertyPath: player

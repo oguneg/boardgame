@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
     public void OnQuizComplete(bool isSuccess)
     {
         flagQuizHandler.gameObject.SetActive(false);
-        gameManager.CompleteQuiz();
+        gameManager.CompleteQuiz(isSuccess);
     }
 
     public void UpdateDiceText(int remainingSteps)
