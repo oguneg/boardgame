@@ -11,17 +11,24 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player.OnMovementEnded += OnTileLanded;
+        player.OnMoved+=OnPlayerMoved;
     }
 
     public void Roll()
     {
         moves = Random.Range(1, 7);
+        uiManager.UpdateDiceText(moves);
         player.Move(moves);
     }
 
     private void CompleteTurn()
     {
         uiManager.EnableRoll();
+    }
+
+    private void OnPlayerMoved(int remainingSteps)
+    {
+        uiManager.UpdateDiceText(remainingSteps);
     }
 
     private void OnTileLanded(TileType tileType)

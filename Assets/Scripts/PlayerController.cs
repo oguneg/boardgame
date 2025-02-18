@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private TrackTile currentTile;
 
     public UnityAction<TileType> OnMovementEnded;
-
+    public UnityAction<int> OnMoved;
     [SerializeField] private Transform pin;
     public void Initialize(Track track)
     {
@@ -31,8 +31,8 @@ public class PlayerController : MonoBehaviour
         {
             yield return new WaitForSeconds(0.25f);
             MoveToNextTile(i < stepCount - 1);
+            OnMoved?.Invoke(stepCount - i - 1);
         }
-        EndMovement();
     }
 
     private void MoveToNextTile(bool isVisiting)
@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
         currentTile = track.GetNextTile(currentTile);
         transform.DOMove(currentTile.transform.position, 0.15f).SetEase(Ease.InOutSine).OnComplete(() =>
         {
+            FaceNextTile();
             if (isVisiting)
             {
                 currentTile.VisitTile();
@@ -47,8 +48,8 @@ public class PlayerController : MonoBehaviour
             else
             {
                 currentTile.LandTile();
+                EndMovement();
             }
-
         });
 
         pin.DOLocalMoveY(0.5f, 0.075f).SetEase(Ease.InOutSine).SetRelative().SetLoops(2, LoopType.Yoyo);

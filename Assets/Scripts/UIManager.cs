@@ -35,4 +35,9 @@ public class UIManager : MonoBehaviour
         flagQuizHandler.gameObject.SetActive(false);
         gameManager.CompleteQuiz();
     }
+
+    public void UpdateDiceText(int remainingSteps)
+    {
+        rollButton.SetDiceText(remainingSteps);
+    }
 }
