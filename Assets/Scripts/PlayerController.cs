@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public UnityAction<TileType> OnMovementEnded;
     public UnityAction<int> OnMoved;
     [SerializeField] private Transform pin;
+    [SerializeField] private Animator animator;
+    private int JumpAnimTrigger = Animator.StringToHash("Jump");
     public void Initialize(Track track)
     {
         this.track = track;
@@ -53,7 +55,7 @@ public class PlayerController : MonoBehaviour
         });
 
         pin.DOLocalMoveY(0.5f, 0.075f).SetEase(Ease.InOutSine).SetRelative().SetLoops(2, LoopType.Yoyo);
-        pin.DOScaleY(1.5f, 0.075f).SetEase(Ease.InOutBack).SetLoops(2, LoopType.Yoyo);
+        animator.SetTrigger(JumpAnimTrigger);
     }
 
     private void EndMovement()

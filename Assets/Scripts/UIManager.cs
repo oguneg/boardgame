@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
     [SerializeField] private RollButtonHandler rollButton;
-    [SerializeField] private FlagQuizHandler flagQuizHandler;
+    [SerializeField] private QuizHandler flagQuizHandler, textQuizHandler;
     private void Start()
     {
         rollButton.OnButtonClicked += OnRollButton;

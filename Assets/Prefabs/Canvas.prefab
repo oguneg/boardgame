@@ -610,6 +610,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlagQuizScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 5508296761048831156, guid: cf90b4fb8f42286468894287f51883ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

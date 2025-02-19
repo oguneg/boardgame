@@ -5,26 +5,17 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine.Events;
 
-public class FlagQuizHandler : MonoBehaviour
+public class FlagQuizHandler : QuizHandler
 {
     [SerializeField] private List<FlagButtonHandler> flagButtons;
-    [SerializeField] private QuestionManager questionManager;
-    [SerializeField] private TextMeshProUGUI questionText, timerText;
 
-    [SerializeField] private Transform portrait, speechBubble, timerBG;
-    [SerializeField] private CanvasGroup cg;
-
-    private const int ANSWER_TIME = 10;
-
-    private Coroutine timerRoutine;
-    private QuizQuestion question;
-    public UnityAction<bool> OnQuizComplete;
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         SubscribeToButtons();
     }
 
-    public void StartQuiz()
+    public override void StartQuiz()
     {
         question = questionManager.GetFlagQuestion();
         questionText.text = question.Question;
@@ -38,7 +29,8 @@ public class FlagQuizHandler : MonoBehaviour
     private void Appear()
     {
         cg.alpha = 0;
-        timerBG.localScale = portrait.localScale = speechBubble.localScale = Vector3.zero;
+        timer.HideTimer();
+        portrait.localScale = speechBubble.localScale = Vector3.zero;
         foreach (var element in flagButtons)
         {
             element.transform.localScale = Vector3.zero;
@@ -56,24 +48,14 @@ public class FlagQuizHandler : MonoBehaviour
 
     private void StartTimer()
     {
-        timerRoutine = StartCoroutine(TimerRoutine());
+        timer.StartTimer();
     }
 
-    private IEnumerator TimerRoutine()
+    protected override void OnTimeRunOut()
     {
-        int timer = ANSWER_TIME;
-        timerText.text = timer.ToString();
-        timerBG.DOScale(1f, 0.2f).SetEase(Ease.OutBack);
-        var wfs = new WaitForSeconds(1f);
-        while (timer > 0)
-        {
-            yield return wfs;
-            timer--;
-            timerText.transform.DOScale(1.3f, 0.1f).SetEase(Ease.InOutBack).SetLoops(2, LoopType.Yoyo);
-            timerText.text = timer.ToString();
-        }
-        RunOutOfTime();
+        OnAnswerButtonClicked(-1);
     }
+
 
     private void SubscribeToButtons()
     {
@@ -83,15 +65,9 @@ public class FlagQuizHandler : MonoBehaviour
         }
     }
 
-    private void RunOutOfTime()
-    {
-        OnAnswerButtonClicked(-1);
-    }
-
     private void EndTimer()
     {
-        StopCoroutine(timerRoutine);
-        timerRoutine = null;
+        timer.StopTimer();
     }
 
     private void OnAnswerButtonClicked(int index)
@@ -103,13 +79,7 @@ public class FlagQuizHandler : MonoBehaviour
             flagButtons[index].ShowFrame(false);
         }
         flagButtons[question.CorrectAnswerIndex].ShowFrame(true);
+        ShowResultText(isCorrect);
         StartCoroutine(EndQuizAfterDelay(isCorrect));
-    }
-
-    private IEnumerator EndQuizAfterDelay(bool isCorrect)
-    {
-        cg.DOFade(0, 0.2f).SetDelay(1.8f);
-        yield return new WaitForSeconds(2f);
-        OnQuizComplete?.Invoke(isCorrect);
     }
 }
