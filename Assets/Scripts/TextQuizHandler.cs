@@ -4,11 +4,13 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
-public class FlagQuizHandler : QuizHandler
+public class TextQuizHandler : QuizHandler
 {
-    [SerializeField] private List<FlagButtonHandler> flagButtons;
-
+    [SerializeField] private List<TextButtonHandler> answerButtons;
+    [SerializeField] private Image questionImage;
+    [SerializeField] private Transform imageBG;
     private bool isAnswered;
     protected override void Start()
     {
@@ -18,11 +20,12 @@ public class FlagQuizHandler : QuizHandler
 
     public override void StartQuiz()
     {
-        question = questionManager.GetFlagQuestion();
+        question = questionManager.GetTextQuestion();
         questionText.text = question.Question;
+        questionImage.sprite = questionManager.GetQuestionImage(question.CustomImageID);
         for (int i = 0; i < 4; i++)
         {
-            flagButtons[i].SetValues(i, questionManager.GetFlag(question.Answers[i].ImageID));
+            answerButtons[i].SetValues(i, question.Answers[i].Text);
         }
         Appear();
     }
@@ -32,8 +35,8 @@ public class FlagQuizHandler : QuizHandler
         cg.alpha = 0;
         isAnswered = false;
         timer.HideTimer();
-        portrait.localScale = speechBubble.localScale = Vector3.zero;
-        foreach (var element in flagButtons)
+        imageBG.localScale = portrait.localScale = speechBubble.localScale = Vector3.zero;
+        foreach (var element in answerButtons)
         {
             element.transform.localScale = Vector3.zero;
         }
@@ -41,9 +44,10 @@ public class FlagQuizHandler : QuizHandler
         cg.DOFade(1, 0.3f).SetDelay(0.2f);
         portrait.DOScale(1f, 0.3f).SetEase(Ease.OutBack).SetDelay(0.7f);
         speechBubble.DOScale(1f, 0.3f).SetEase(Ease.OutBack).SetDelay(1.1f);
-        foreach (var element in flagButtons)
+        imageBG.DOScale(1f, 0.3f).SetEase(Ease.OutBack).SetDelay(1.5f);
+        foreach (var element in answerButtons)
         {
-            element.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack).SetDelay(Random.Range(0, 0.35f) + 1.7f);
+            element.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack).SetDelay(Random.Range(0, 0.35f) + 1.9f);
         }
         DOVirtual.DelayedCall(2f, StartTimer);
     }
@@ -61,9 +65,9 @@ public class FlagQuizHandler : QuizHandler
 
     private void SubscribeToButtons()
     {
-        foreach (var element in flagButtons)
+        foreach (var element in answerButtons)
         {
-            element.OnFlagButtonClicked += OnAnswerButtonClicked;
+            element.OnTextButtonClicked += OnAnswerButtonClicked;
         }
     }
 
@@ -80,9 +84,9 @@ public class FlagQuizHandler : QuizHandler
         bool isCorrect = index == question.CorrectAnswerIndex;
         if (!isCorrect && index != -1)
         {
-            flagButtons[index].ShowFrame(false);
+            answerButtons[index].ShowFrame(false);
         }
-        flagButtons[question.CorrectAnswerIndex].ShowFrame(true);
+        answerButtons[question.CorrectAnswerIndex].ShowFrame(true);
         ShowResultText(isCorrect);
         StartCoroutine(EndQuizAfterDelay(isCorrect));
     }

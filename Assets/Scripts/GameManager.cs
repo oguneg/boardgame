@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player.OnMovementEnded += OnTileLanded;
-        player.OnMoved+=OnPlayerMoved;
+        player.OnMoved += OnPlayerMoved;
     }
 
     public void Roll()
@@ -46,14 +46,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) TriggerMinigame();
+    }
+
     private void TriggerMinigame()
     {
-        uiManager.StartFlagQuiz();
+        if (Random.value > 0.5f)
+        {
+            uiManager.StartFlagQuiz();
+        }
+        else
+        {
+            uiManager.StartTextQuiz();
+        }
     }
 
     public void CompleteQuiz(bool isSuccess)
     {
-        if(isSuccess)
+        if (isSuccess)
         {
             currencyManager.AddCurrency(100);
         }

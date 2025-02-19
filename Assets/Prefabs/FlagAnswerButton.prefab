@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 5279613084167626159}
   - component: {fileID: 4344371189562047881}
   m_Layer: 5
-  m_Name: AnswerButton
+  m_Name: FlagAnswerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

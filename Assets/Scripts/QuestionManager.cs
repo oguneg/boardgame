@@ -10,15 +10,18 @@ public class QuestionManager : MonoBehaviour
     private Dictionary<string, Sprite> flagQuizSpriteDictionary = new Dictionary<string, Sprite>();
     private Dictionary<string, Sprite> textQuizSpriteDictionary = new Dictionary<string, Sprite>();
     private QuizQuestion flagQuestion;
+    private QuizQuestion textQuestion;
 
     private void Start()
     {
         FillDictionary();
         ParseFlagQuestions();
+        ParseTextQuestions();
     }
 
     private void ParseTextQuestions()
     {
+        textQuestion = JsonUtility.FromJson<QuizQuestion>(imageQuizQuestion.text);
     }
 
     private void ParseFlagQuestions()
@@ -28,9 +31,13 @@ public class QuestionManager : MonoBehaviour
 
     private void FillDictionary()
     {
-        foreach(var element in flagQuizSprites)
+        foreach (var element in flagQuizSprites)
         {
             flagQuizSpriteDictionary.Add(element.name, element);
+        }
+        foreach (var element in textQuizSprites)
+        {
+            textQuizSpriteDictionary.Add(element.name, element);
         }
     }
 
@@ -39,9 +46,19 @@ public class QuestionManager : MonoBehaviour
         return flagQuizSpriteDictionary[id];
     }
 
+    public Sprite GetQuestionImage(string id)
+    {
+        return textQuizSpriteDictionary[id];
+    }
+
     public QuizQuestion GetFlagQuestion()
     {
         return flagQuestion;
+    }
+
+    public QuizQuestion GetTextQuestion()
+    {
+        return textQuestion;
     }
 }
 
