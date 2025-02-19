@@ -7,10 +7,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIManager uiManager;
     [SerializeField] private CurrencyManager currencyManager;
     [SerializeField] private PlayerController player;
+    [SerializeField] private TrackManager trackManager;
+    private const string levelIndexSaveKey = "BoardGame.Level";
+    private int levelIndex;
     int moves = 0;
 
     private void Start()
     {
+        levelIndex = PlayerPrefs.GetInt(levelIndexSaveKey);
+        trackManager.LoadTrack(levelIndex);
         player.OnMovementEnded += OnTileLanded;
         player.OnMoved += OnPlayerMoved;
     }
@@ -70,5 +75,11 @@ public class GameManager : MonoBehaviour
             currencyManager.AddCurrency(100);
         }
         CompleteTurn();
+    }
+
+    public void NextLevel()
+    {
+        PlayerPrefs.SetInt(levelIndexSaveKey, levelIndex + 1);
+        SceneHandler.Reload();
     }
 }

@@ -5,19 +5,14 @@ public class TrackManager : MonoBehaviour
 {
     public List<Track> tracks;
     public Material startTileMat, defaultTileMat, minigameTileMat;
-    
+
     public List<TrackTileData> trackTiles = new List<TrackTileData>();
     private Track loadedTrack;
     [SerializeField] private PlayerController player;
 
-    private void Start()
+    public void LoadTrack(int index)
     {
-        LoadTrack();
-    }
-
-    public void LoadTrack()
-    {
-        loadedTrack = Instantiate(tracks[0], transform);
+        loadedTrack = Instantiate(tracks[index % tracks.Count], transform);
         loadedTrack.AssignMaterials(defaultTileMat, startTileMat, minigameTileMat);
         player.Initialize(loadedTrack);
     }

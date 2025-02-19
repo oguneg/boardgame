@@ -48,7 +48,7 @@
         {
             "isTrackTile": true,
             "isStart": false,
-            "isMinigame": false,
+            "isMinigame": true,
             "position": {
                 "x": 1,
                 "y": 3
@@ -174,7 +174,7 @@
         {
             "isTrackTile": true,
             "isStart": false,
-            "isMinigame": false,
+            "isMinigame": true,
             "position": {
                 "x": 5,
                 "y": 4
@@ -185,5 +185,5 @@
         "x": 6,
         "y": 6
     },
-    "trackName": "New Track"
+    "trackName": "Track1"
 }

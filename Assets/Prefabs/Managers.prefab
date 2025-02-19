@@ -50,6 +50,7 @@ MonoBehaviour:
   uiManager: {fileID: 0}
   currencyManager: {fileID: 2064117896739776645}
   player: {fileID: 0}
+  trackManager: {fileID: 6158531053127365802}
 --- !u!114 &6158531053127365802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,7 +64,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tracks:
+  - {fileID: 4063666470401232209, guid: 31914ada084ce7a4aa81c844b4bf8561, type: 3}
   - {fileID: 1720616751356237997, guid: 7ecd3ccedf5ada347ba9eebc0f7b44e3, type: 3}
+  - {fileID: 3253283698604326136, guid: 913e7dca07d21604ba8900fdcc64e635, type: 3}
   startTileMat: {fileID: 2100000, guid: 76e73f3e9129d4c00b1ac4d54a095af6, type: 2}
   defaultTileMat: {fileID: 2100000, guid: a3d8e6ca171d4410fadaf0032c6dda2e, type: 2}
   minigameTileMat: {fileID: 2100000, guid: a88a59feaa0024037ab3f8fc07d1a741, type: 2}
