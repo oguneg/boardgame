@@ -84,8 +84,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755d63259d732f04283086a871736740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageQuizQuestion: {fileID: 4900000, guid: 952f70ada48f2445494217015362263b, type: 3}
-  flagQuizJson: {fileID: 4900000, guid: 66588a69ef43e4ed288f156ecfd7e532, type: 3}
+  imageQuizJsons:
+  - {fileID: 4900000, guid: 952f70ada48f2445494217015362263b, type: 3}
+  flagQuizJsons:
+  - {fileID: 4900000, guid: 66588a69ef43e4ed288f156ecfd7e532, type: 3}
+  - {fileID: 4900000, guid: 5742f8a32b39574439c63859e0e62e13, type: 3}
   flagQuizSprites:
   - {fileID: 21300000, guid: aa7afeb4cdb604109a8aa4c8e19c5207, type: 3}
   - {fileID: 21300000, guid: f01b1383a489f473380152fa57a2626b, type: 3}

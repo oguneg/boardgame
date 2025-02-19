@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class QuestionManager : MonoBehaviour
 {
-    [SerializeField] private TextAsset imageQuizQuestion, flagQuizJson;
+    [SerializeField] private TextAsset[] imageQuizJsons, flagQuizJsons;
     [SerializeField] private List<Sprite> flagQuizSprites;
     [SerializeField] private List<Sprite> textQuizSprites;
     private Dictionary<string, Sprite> flagQuizSpriteDictionary = new Dictionary<string, Sprite>();
     private Dictionary<string, Sprite> textQuizSpriteDictionary = new Dictionary<string, Sprite>();
-    private QuizQuestion flagQuestion;
-    private QuizQuestion textQuestion;
+    private QuizQuestion[] flagQuestions;
+    private QuizQuestion[] textQuestions;
 
     private void Start()
     {
@@ -21,12 +21,20 @@ public class QuestionManager : MonoBehaviour
 
     private void ParseTextQuestions()
     {
-        textQuestion = JsonUtility.FromJson<QuizQuestion>(imageQuizQuestion.text);
+        textQuestions = new QuizQuestion[imageQuizJsons.Length];
+        for (int i = 0; i < imageQuizJsons.Length; i++)
+        {
+            textQuestions[i] = JsonUtility.FromJson<QuizQuestion>(imageQuizJsons[i].text);
+        }
     }
 
     private void ParseFlagQuestions()
     {
-        flagQuestion = JsonUtility.FromJson<QuizQuestion>(flagQuizJson.text);
+        flagQuestions = new QuizQuestion[flagQuizJsons.Length];
+        for (int i = 0; i < flagQuizJsons.Length; i++)
+        {
+            flagQuestions[i] = JsonUtility.FromJson<QuizQuestion>(flagQuizJsons[i].text);
+        }
     }
 
     private void FillDictionary()
@@ -53,12 +61,12 @@ public class QuestionManager : MonoBehaviour
 
     public QuizQuestion GetFlagQuestion()
     {
-        return flagQuestion;
+        return flagQuestions[Random.Range(0, flagQuestions.Length)];
     }
 
     public QuizQuestion GetTextQuestion()
     {
-        return textQuestion;
+        return textQuestions[Random.Range(0, textQuestions.Length)];
     }
 }
 

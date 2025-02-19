@@ -14,6 +14,7 @@ public class SceneHandler : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
         if (instance != null)
         {
             Debug.LogError("Have another instance");

@@ -1,0 +1,25 @@
+{
+  "ID": "2",
+  "QuestionType": 1,
+  "Question": "Which flag belongs to USA?",
+  "CustomImageID": null,
+  "Answers": [
+    {
+      "ImageID": "ie",
+      "Text": null
+    },
+    {
+      "ImageID": "nz",
+      "Text": null
+    },
+    {
+      "ImageID": "us",
+      "Text": null
+    },
+    {
+      "ImageID": "ca",
+      "Text": null
+    }
+  ],
+  "CorrectAnswerIndex": 2
+}

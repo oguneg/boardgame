@@ -51,10 +51,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) TriggerMinigame();
     }
+#endif
 
     private void TriggerMinigame()
     {
